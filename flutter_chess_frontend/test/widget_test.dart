@@ -1,18 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_chess_frontend/main.dart';
+import 'package:flutter_chess_frontend/src/app/app.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('App boots', (WidgetTester tester) async {
+    await tester.pumpWidget(const ChessApp());
+    await tester.pumpAndSettle();
 
-    expect(find.text('flutter_chess_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
-
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    expect(find.text('flutter_chess_frontend'), findsOneWidget);
+    expect(find.textContaining('Local Chess'), findsOneWidget);
   });
 }
